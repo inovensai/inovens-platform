@@ -10,10 +10,6 @@ def api(path,body=None):
 def sync():
     data=api('sync');sync_profiles(data['users'])
     with connect() as c:
-        ownerid=c.execute("SELECT id FROM platform_users WHERE role='owner'").fetchone()['id']
-        for op in data.get('operations',[]):
-            source=op.get('source_ref') or 'legacy:'+str(op)
-            c.execute('INSERT INTO operations(kind,title,owner_name,due_date,status,note,source_ref,scope,created_by) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(source_ref) DO NOTHING',(op['kind'],op['title'],op.get('owner_name') or '',op.get('due_date'),op.get('status') or 'candidate',op.get('note') or '',source,'board',ownerid))
         profiles=c.execute('SELECT id,role,status,telegram_id FROM platform_users').fetchall()
     api('heartbeat',{'users':profiles})
 
