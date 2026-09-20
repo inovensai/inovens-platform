@@ -58,16 +58,16 @@ from pathlib import Path
 import mimetypes,requests,sys
 
 source=Path(sys.argv[1]);token=Path(sys.argv[2]).read_text().strip();slot=sys.argv[3]
-host='https://cpanel14-web-host-cl.turkticaret.net:2083'
+host='https://your-cpanel-host:2083'
 headers={'Authorization':'cpanel ino3d2saicom:'+token}
 mkdir=requests.get(host+'/json-api/cpanel',headers=headers,params={
- 'cpanel_jsonapi_user':'ino3d2saicom','cpanel_jsonapi_apiversion':'2','cpanel_jsonapi_module':'Fileman',
- 'cpanel_jsonapi_func':'mkdir','path':'/home/ino3d2saicom','name':'inovens-backups','permissions':'0700'},timeout=30)
+ 'cpanel_jsonapi_user':os.environ.get('CPANEL_USER','your-cpanel-user'),'cpanel_jsonapi_apiversion':'2','cpanel_jsonapi_module':'Fileman',
+ 'cpanel_jsonapi_func':'mkdir','path':'/home/your-cpanel-user','name':'inovens-backups','permissions':'0700'},timeout=30)
 mkdir.raise_for_status()
 name='platform-offsite-'+slot+'.enc'
 with source.open('rb') as handle:
  response=requests.post(host+'/execute/Fileman/upload_files',headers=headers,
-  data={'dir':'/home/ino3d2saicom/inovens-backups','overwrite':'1'},
+  data={'dir':'/home/your-cpanel-user/inovens-backups','overwrite':'1'},
   files={'file-1':(name,handle,'application/octet-stream')},timeout=600)
 response.raise_for_status();payload=response.json()
 status=payload.get('status',payload.get('result',{}).get('status'))

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-$configPath = '/home/ino3d2saicom/inovens-hub-private/config.php';
+$configPath = '/home/cpanel-user/inovens-hub-private/config.php';
 if (!is_file($configPath)) {
     http_response_code(503);
     header('Content-Type: application/json; charset=utf-8');

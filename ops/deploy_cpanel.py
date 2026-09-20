@@ -11,8 +11,8 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
-HOST = os.environ.get("CPANEL_HOST", "https://cpanel14-web-host-cl.turkticaret.net:2083")
-USER = os.environ.get("CPANEL_USER", "ino3d2saicom")
+HOST = os.environ.get("CPANEL_HOST", "https://your-cpanel-host:2083")
+USER = os.environ.get("CPANEL_USER", "your-cpanel-user")
 REMOTE = os.environ.get("CPANEL_PANEL_ROOT", f"/home/{USER}/public_html/panel")
 
 
