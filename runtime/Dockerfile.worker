@@ -1,0 +1,8 @@
+FROM node:24-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends python3 socat imagemagick ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY openclaw /opt/openclaw
+COPY worker_mcp.py /opt/worker_mcp.py
+RUN ln -s /opt/openclaw/dist/index.js /usr/local/bin/openclaw
+USER node
+WORKDIR /workspace
+ENTRYPOINT ["/bin/sh","-c","socat TCP-LISTEN:23680,bind=127.0.0.1,reuseaddr,fork UNIX-CONNECT:/run/platform/platform.sock & exec node /opt/openclaw/dist/index.js agent --local --json --message-file /run/input/message.txt --session-id \"$CONVERSATION_ID\" --model \"$INOVENS_MODEL\" --timeout \"$JOB_TIMEOUT\""]

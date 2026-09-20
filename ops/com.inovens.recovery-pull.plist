@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.inovens.recovery-pull</string>
+  <key>ProgramArguments</key>
+  <array><string>/Users/egearhany/Library/Application Support/INOVENS Recovery/pull-backups-mac.sh</string></array>
+  <key>RunAtLoad</key><true/>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>5</integer><key>Minute</key><integer>10</integer></dict>
+  <key>StandardOutPath</key><string>/Users/egearhany/Library/Logs/inovens-recovery.log</string>
+  <key>StandardErrorPath</key><string>/Users/egearhany/Library/Logs/inovens-recovery-error.log</string>
+</dict>
+</plist>

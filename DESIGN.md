@@ -1,0 +1,2 @@
+# INOVENS interface
+Operate mode. Preserve incumbent dark charcoal/green identity (#0b0d0f background, #2db77f accent), Fluent UI controls and Aptos/Segoe UI system typography. Dense readable tables for administration, clear quota states, focused chat layout and mobile navigation. No decorative hero dashboards. Personal/admin views enforce different data contracts. Every action includes loading, recoverable error, empty and success states; displayed system figures are measured, never mock production values.

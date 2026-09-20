@@ -1,0 +1,6 @@
+FROM openclaw-sandbox-browser:bookworm-slim
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends socat && rm -rf /var/lib/apt/lists/*
+USER sandbox
+ENV HOME=/tmp XDG_CONFIG_HOME=/tmp/.config XDG_CACHE_HOME=/tmp/.cache
+ENTRYPOINT ["sh","-c","socat TCP-LISTEN:3128,bind=127.0.0.1,reuseaddr,fork UNIX-CONNECT:/egress/egress.sock & socat UNIX-LISTEN:/ipc/cdp.sock,fork,mode=0600 TCP:127.0.0.1:9222 & exec chromium --headless=new --no-sandbox --disable-dev-shm-usage --disable-background-networking --disable-quic --disable-sync --disable-extensions --disable-features=WebRtcHideLocalIpsWithMdns --proxy-server=http://127.0.0.1:3128 --proxy-bypass-list=\"<-loopback>\" --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --user-data-dir=/tmp/profile about:blank"]

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "/Users/egearhany/Documents/Codex/2026-09-05/ss/work/inovens-hub/frontend/src/styles.css"
+        ],
+        "createdAt": "2026-09-08T15:00:30.820Z",
+        "reason": "False positive: current stylesheet uses uniform 1px card borders and contains no thick one-sided accent border."
+      }
+    ]
+  }
+}

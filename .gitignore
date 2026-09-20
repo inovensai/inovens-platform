@@ -1,0 +1,15 @@
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+public/assets/
+deploy-backups/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+.env
+*.env
+*.key
+*.pem
+config.php
+config.local.php
+work/secrets/
